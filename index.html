@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--
+================================================================
+  合同会社Life ブランドサイト デザイン案（index.html 単一ファイル）
+  コンセプト：「人生に、光をあてる。」
+    社名「Life（人生）」から着想。アーティストの発掘・養成から、マネジメント、プロモートまでを
+    一貫して手がけることを、ひとりの人生の長い時間に寄り添い、その節目ごとに光をあてていく仕事として表現。
+    光は、舞台を照らすフォロースポット（追いかけて照らす照明）。
+    探す（発掘）→ 照らしつづける（養成・マネジメント）→ 光を広げる（プロモート）。
+    ・ヒーロー：暗い舞台の上をスポットライトが探すように動き、一点を見つけて止まり、
+      光の輪が広がっていくCanvasアニメーション（ポインターの動きに光が少しついてくる）。
+    ・右端のスクロールレール：劇場の看板の電球が縦に並び、読み進めるほど上から灯っていく。
+      表示は「ACT Ⅰ…」と幕の番号で進む。
+    ※所在地・地名など土地から着想した要素、代表者のお名前から着想した要素は採用していません。
+  デプロイ：Cloudflare Pages（Direct Upload）にこのファイルをそのままアップロード。
+            ビルド不要。外部依存は Google Fonts と Unsplash 画像のみ。
+
+  ■ 公開前の確認事項（チェックリスト）
+  [ ] 1. 社名の由来（「Life＝人生」は本案の解釈で問題ないか）
+  [ ] 2. 代表者の役職名（合同会社のため「代表社員」と仮置き）
+  [ ] 3. 設立年月日・資本金・従業員数・所在地・代表者名 … 掲載可否が未確認のため会社概要ではコメントアウト
+  [ ] 4. 業種固有の法令：職業安定法（タレント等の有料職業紹介に当たる業務がある場合の許可）、
+         労働基準法（年少者の就業制限・深夜業）、景品表示法（スクール・講座の募集表示）、
+         特定商取引法（養成講座・教材を通信販売・継続的役務として提供する場合）、
+         出版物の著作権・肖像権の取り扱い
+  [ ] 5. 代表メッセージは草案です。ご本人の確認・修正を経て公開してください
+  [ ] 6. 画像はUnsplashのフリー素材（仮）。所属アーティストや実際の公演写真への差し替え推奨
+  [ ] 7. OGP画像・favicon・公開URL
+
+  ▼ 確認事項一覧（本文中にも【確認事項】コメントあり）
+  【確認事項】1. キャッチコピー「人生に、光をあてる。」ほか見出し・本文コピーはすべて仮の案です（旧案「才能に、幕を上げる。」を改稿）
+  【確認事項】2. ロゴ表記「Life」とサブ表記「ENTERTAINMENT」は仮のデザイン表記です（正式な英字ロゴの有無をご確認ください）
+  【確認事項】3. 「エンタメ企業」という位置づけはCSVの記載に基づきますが、ページ上での名乗り方をご確認ください
+  【確認事項】4. 発掘・養成・マネジメント・プロモートの各説明文はCSVの事業内容を膨らませた仮の文章です
+  【確認事項】5. イベント・セミナー・コンサート・講演会、教育・出版の各説明文は仮の文章です（具体的な実績・書名・出演者名は掲載していません）
+  【確認事項】6. 「大切にしていること」の3項目は仮の理念案です
+  【確認事項】7. 会社概要に代表者・所在地をCSVのとおり掲載しました（設立・資本金はCSVに無いため未掲載）
+  【確認事項】8. 写真はすべてUnsplashのフリー素材です。所属アーティストや実際の公演写真への差し替えを推奨します
+  【確認事項】9. og:image・og:url・faviconは本番URLに合わせて設定してください
+  【確認事項】10. 「Life＝人生」「スポットライト」の見立ては本案の表現です
+  【確認事項】11. 既存サイト「LiFE」とは代表者・所在地が異なる別会社として作成しています
+  【確認事項】12. 代表メッセージは草案。署名欄は役職のみで、お名前は載せていません（役職名「代表社員」も仮）
+  【確認事項】13. 英文の装飾ラベル（about the name／business など）は装飾用の仮表記
+
+  画像：Unsplash（フリー素材・仮）
+    photo-1503095396549-807759245b35（紅い緞帳の前の演者たちの影）… 帯写真
+    photo-1534528741775-53994a69daeb（まっすぐ前を見つめる人物のポートレート）
+    photo-1499364615650-ec38552f4f34（照明に照らされたライブステージと観客）
+    photo-1465847899084-d164df4dedc6（弦楽器の演奏）
+    photo-1540575467063-178a50c2df87（講演会の客席）
+    photo-1471107340929-a87cd0f5b5f3（ノートと万年筆）
+================================================================
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>合同会社Life｜人生に、光をあてる。アーティストの発掘・養成・マネジメント・プロモートと、イベント・出版</title>
+<meta name="description" content="合同会社Lifeは、タレント・モデル・音楽家などアーティストの発掘・養成からマネジメント、プロモートまで一貫して手がけるエンタメ企業です。イベント・セミナー・コンサート・講演会の企画運営、教育・出版事業も展開しています。">
+<meta property="og:title" content="合同会社Life｜人生に、光をあてる。">
+<meta property="og:description" content="アーティストの発掘・養成からマネジメント、プロモートまで。イベント・コンサート・講演会の企画運営、教育・出版も。">
+<meta property="og:type" content="website">
+<!-- 要確認：og:url / og:image は公開ドメイン確定後に設定 -->
+<meta name="theme-color" content="#1A1320">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1320'/%3E%3Cpath d='M40 6 L20 50 L50 50 Z' fill='%23F1CF8A' fill-opacity='.35'/%3E%3Cellipse cx='35' cy='50' rx='15' ry='5' fill='%23F1CF8A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#1A1320;        /* 楽屋の紫黒：基調 */
+  --base-2:#23192B;      /* 一段明るい紫黒 */
+  --base-deep:#120D17;   /* 客席の暗がり（フッター・会社概要） */
+  --text:#F2EBE3;        /* 照らされた白 */
+  --mute:#A698A8;        /* 藤鼠 */
+  --lime:#F1CF8A;        /* ライムライトの光（アクセント） */
+  --lime-deep:#9A6C1E;   /* 紙の上の光の色 */
+  --curtain:#B4304A;     /* 緞帳の紅（差し色） */
+  --line:rgba(242,235,227,.14);
+  --paper:#F1EAE0;       /* 公演プログラムの紙 */
+  --ink:#24191F;
+  --ink-mute:#6B5C63;
+  --ink-line:rgba(36,25,31,.16);
+  --serif:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --latin:"Bodoni Moda","Didot","Times New Roman",serif;
+  --wrap:min(1160px, 100% - 48px);
+  --header-h:76px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--base);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.95;letter-spacing:.04em;word-break:auto-phrase;text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ol,ul,dl,dd,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+img{max-width:100%;display:block}
+a{color:inherit}
+.nw{display:inline-block}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--lime);color:var(--base);padding:10px 16px;text-decoration:none;font-weight:700}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+
+/* ---------- Header ---------- */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background .45s,border-color .45s,backdrop-filter .45s}
+.header.is-scrolled{background:rgba(26,19,32,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.header__in{width:var(--wrap);margin-inline:auto;height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:baseline;gap:12px;text-decoration:none;line-height:1}
+.logo b{font-family:var(--latin);font-style:italic;font-weight:400;font-size:30px;letter-spacing:.02em}
+.logo b i{font-style:italic;color:var(--lime)}
+.logo small{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--mute)}
+.gnav ul{display:flex;gap:clamp(18px,2.4vw,34px)}
+.gnav a{display:block;padding:6px 0;text-decoration:none;font-size:13px;letter-spacing:.12em;opacity:.82;transition:opacity .3s,color .3s}
+.gnav a:hover,.gnav a:focus-visible{opacity:1;color:var(--lime)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:50%;color:var(--text);width:46px;height:46px;cursor:pointer;position:relative}
+.menu-btn span{position:absolute;left:13px;right:13px;height:1.5px;background:currentColor;transition:transform .35s,opacity .3s}
+.menu-btn span:nth-child(1){top:18px}.menu-btn span:nth-child(2){top:26px;background:var(--lime)}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(30deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){transform:translateY(-4px) rotate(-30deg)}
+
+/* ---------- Rail：劇場看板の電球が上から灯る ---------- */
+.rail{position:fixed;right:24px;top:50%;transform:translateY(-50%);height:54vh;width:16px;z-index:90;pointer-events:none}
+.rail__frame{position:absolute;inset:-10px 0;border:1px solid var(--line);border-radius:10px}
+.rail__bulb{position:absolute;left:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:rgba(242,235,227,.16);transition:background .4s,box-shadow .4s,transform .4s}
+.rail__bulb.is-on{background:var(--lime);box-shadow:0 0 6px rgba(241,207,138,.9),0 0 14px rgba(241,207,138,.4)}
+.rail__bulb.is-now{transform:scale(1.6);animation:twinkle 1.4s ease-in-out infinite}
+@keyframes twinkle{50%{box-shadow:0 0 10px rgba(241,207,138,1),0 0 24px rgba(241,207,138,.6)}}
+.rail__read{position:absolute;right:50%;transform:translateX(50%);top:100%;margin-top:26px;font-family:var(--latin);font-style:italic;font-size:12px;letter-spacing:.14em;color:var(--lime);white-space:nowrap}
+.rail.on-light .rail__frame{border-color:var(--ink-line)}
+.rail.on-light .rail__bulb{background:rgba(36,25,31,.18)}
+.rail.on-light .rail__bulb.is-on{background:var(--lime-deep);box-shadow:none}
+.rail.on-light .rail__read{color:var(--lime-deep)}
+
+/* ---------- Hero（B：縦書きの見出しが左、リードが右下） ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:var(--base-deep);isolation:isolate}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:-2}
+.hero__veil{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(18,13,23,.55) 0%,transparent 22%,transparent 70%,rgba(18,13,23,.85) 100%)}
+.hero__in{position:relative;width:var(--wrap);margin-inline:auto;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;padding:calc(var(--header-h) + 40px) 0 clamp(56px,9vh,96px)}
+.hero__title{grid-column:1;grid-row:1;writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(40px,4.8vw,68px);line-height:1.55;letter-spacing:.2em;margin-left:clamp(0px,2vw,32px);text-shadow:0 2px 28px rgba(18,13,23,.8)}
+.hero__title span{display:block;opacity:0;animation:rise 1.8s cubic-bezier(.22,.61,.36,1) .6s forwards}
+.hero__title span+span{padding-top:2.4em;animation-delay:1.1s}
+.hero__title em{font-style:normal;color:var(--lime)}
+.hero__lead{grid-column:2;grid-row:1;justify-self:end;align-self:end;max-width:27em;text-align:left;opacity:0;animation:fade 1.6s 1.6s cubic-bezier(.22,.61,.36,1) forwards}
+.hero__en{font-family:var(--latin);font-style:italic;font-size:clamp(17px,1.6vw,21px);letter-spacing:.04em;color:var(--lime);margin-bottom:14px}
+.hero__biz{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:16px}
+.hero__biz li{font-size:12.5px;letter-spacing:.1em;padding:3px 12px;border:1px solid rgba(241,207,138,.4);border-radius:999px}
+.hero__lead p{font-size:15px;line-height:2.05;color:#DCD2D0}
+.scroll-cue{position:absolute;left:clamp(24px,5vw,64px);bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;font-family:var(--latin);font-style:italic;font-size:13px;letter-spacing:.14em;color:var(--mute);text-decoration:none}
+.scroll-cue::after{content:"";width:60px;height:1px;background:var(--mute);transform-origin:left;animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+
+/* ---------- Sections / heading（JA見出し＋EN italicの添え） ---------- */
+.sec{position:relative;padding:clamp(96px,14vw,180px) 0}
+.sec-h{margin-bottom:clamp(40px,6vw,72px)}
+.sec-h h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,40px);letter-spacing:.12em;line-height:1.55}
+.sec-h .sub{display:block;margin-top:10px;font-family:var(--latin);font-style:italic;font-size:clamp(15px,1.4vw,18px);letter-spacing:.06em;color:var(--lime)}
+.sec-lead{max-width:36em;color:#D3C9C8;margin-top:-24px;margin-bottom:clamp(48px,7vw,88px)}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity 1.1s cubic-bezier(.22,.61,.36,1),transform 1.1s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.is-in{opacity:1;transform:none}
+
+/* ---------- Concept ---------- */
+.concept__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:center}
+.concept__text p{color:#D3C9C8;max-width:32em}
+.concept__text p+p{margin-top:1.2em}
+.word{margin-bottom:2em;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.word dt{font-family:var(--latin);font-style:italic;font-size:clamp(48px,6vw,76px);line-height:1;color:var(--text)}
+.word dt i{color:var(--lime)}
+.word dt small{font-family:var(--latin);font-style:normal;font-size:13px;letter-spacing:.2em;color:var(--mute);margin-left:14px;vertical-align:middle}
+.word dd{margin-top:14px;font-family:var(--serif);font-size:16px;letter-spacing:.12em;line-height:2}
+.arc-fig{width:100%;height:auto;display:block;overflow:visible}
+.arc-fig .ln{fill:none;stroke:var(--lime);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 3s cubic-bezier(.45,.05,.2,1) .3s}
+.arc-fig .floor{stroke:var(--line);stroke-width:1}
+.arc-fig .beam{fill:url(#beamGrad);opacity:0;transition:opacity 1s}
+.arc-fig .pool{fill:var(--lime);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .8s,transform .9s cubic-bezier(.3,1.4,.4,1)}
+.arc-fig .lbl{font-family:var(--serif);font-size:16px;fill:var(--text);letter-spacing:.14em;opacity:0;transition:opacity 1s}
+.arc-fig .en{font-family:var(--latin);font-style:italic;font-size:12px;fill:var(--mute);letter-spacing:.06em;opacity:0;transition:opacity 1s}
+.arc-fig.is-drawn .ln{stroke-dashoffset:0}
+.arc-fig.is-drawn .beam{opacity:.9}
+.arc-fig.is-drawn .pool{opacity:.9;transform:scale(1)}
+.arc-fig.is-drawn .lbl,.arc-fig.is-drawn .en{opacity:1}
+.arc-fig .k1{transition-delay:.9s}.arc-fig .k2{transition-delay:1.6s}.arc-fig .k3{transition-delay:2.3s}.arc-fig .k4{transition-delay:3s}
+
+/* ---------- Photo band ---------- */
+.band{position:relative;height:clamp(280px,44vw,540px);overflow:hidden;background:linear-gradient(135deg,var(--base-2),var(--base))}
+.band img{position:absolute;left:0;top:-9%;width:100%;height:118%;object-fit:cover;filter:saturate(.72) brightness(.62) contrast(1.04);will-change:transform}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,19,32,.55) 0%,transparent 40%,rgba(26,19,32,.88) 100%)}
+.band.is-fallback{background:repeating-linear-gradient(90deg,rgba(180,48,74,.5) 0 18px,rgba(120,24,44,.5) 18px 26px),var(--base-2)}
+.band p{position:absolute;z-index:1;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 24px;font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.6vw,32px);letter-spacing:.18em;line-height:1.8;text-shadow:0 2px 20px rgba(18,13,23,.9)}
+
+/* ---------- Business ---------- */
+.business{background:var(--base-2)}
+.group{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,56px);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.group b{font-family:var(--serif);font-weight:600;font-size:clamp(19px,2vw,23px);letter-spacing:.16em}
+.group span{font-family:var(--latin);font-style:italic;font-size:14px;color:var(--lime)}
+.biz+.group{margin-top:clamp(96px,13vw,160px)}
+.biz{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,88px);align-items:center}
+.biz+.biz{margin-top:clamp(72px,10vw,128px)}
+.biz.rev .biz__media{order:2}
+.biz__media{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:240px 240px 2px 2px;background:linear-gradient(160deg,#3A2433,var(--base))}
+.biz.wide .biz__media{aspect-ratio:5/4;border-radius:2px 120px 2px 2px}
+.biz.rev.wide .biz__media{border-radius:120px 2px 2px 2px}
+.biz__media img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) brightness(.88);clip-path:inset(0 0 100% 0);transition:clip-path 1.4s cubic-bezier(.6,0,.2,1),transform 1.6s cubic-bezier(.22,.61,.36,1)}
+.biz.is-in .biz__media img{clip-path:inset(0 0 0 0)}
+.biz:hover .biz__media img{transform:scale(1.03)}
+.biz__media::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 50% 10%,rgba(241,207,138,.22),transparent 70%)}
+.biz__media.is-fallback{background:radial-gradient(50% 40% at 50% 20%,rgba(241,207,138,.35),transparent 70%),linear-gradient(160deg,#3A2433,var(--base))}
+.biz__kind{display:block;font-family:var(--latin);font-style:italic;font-size:15px;letter-spacing:.04em;color:var(--lime)}
+.biz h3{font-family:var(--serif);font-weight:600;font-size:clamp(23px,2.5vw,31px);letter-spacing:.1em;line-height:1.6;margin:8px 0 6px}
+.biz__name{font-size:14px;letter-spacing:.12em;color:var(--mute)}
+.biz__body > p:not(.biz__name){margin-top:18px;color:#D3C9C8;max-width:30em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags li{font-size:12.5px;letter-spacing:.08em;padding:4px 13px;border:1px solid var(--line);border-radius:999px;color:#E0D7D4}
+
+/* ---------- Flow（公演プログラムの紙） ---------- */
+.flow{background:var(--paper);color:var(--ink)}
+.flow::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,var(--curtain) 0 22px,#8A1F35 22px 26px);opacity:.9}
+.flow .sec-h .sub{color:var(--lime-deep)}
+.flow .sec-lead{color:var(--ink-mute)}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px)}
+.steps::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:var(--ink-line)}
+.steps::after{content:"";position:absolute;left:0;top:11px;height:2px;margin-top:-.5px;width:100%;background:var(--lime-deep);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.6,.05,.2,1)}
+.steps.is-in::after{transform:scaleX(1)}
+.step{position:relative;padding-top:46px;opacity:0;transition:opacity .9s cubic-bezier(.22,.61,.36,1)}
+.steps.is-in .step{opacity:1}
+.steps.is-in .step:nth-child(2){transition-delay:.4s}.steps.is-in .step:nth-child(3){transition-delay:.8s}.steps.is-in .step:nth-child(4){transition-delay:1.2s}
+.step__dot{position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;border:1px solid var(--ink-mute);background:var(--paper);display:grid;place-items:center}
+.step__dot::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--lime-deep);box-shadow:0 0 0 0 rgba(154,108,30,.4);transform:scale(0);transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.steps.is-in .step__dot::after{transform:scale(1)}
+.steps.is-in .step:nth-child(2) .step__dot::after{transition-delay:.6s}.steps.is-in .step:nth-child(3) .step__dot::after{transition-delay:1.2s}.steps.is-in .step:nth-child(4) .step__dot::after{transition-delay:1.8s}
+.step__no{font-family:var(--latin);font-style:italic;font-size:15px;letter-spacing:.06em;color:var(--lime-deep)}
+.step h3{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.16em;margin:4px 0 2px}
+.step__sub{display:block;font-size:12px;letter-spacing:.12em;color:var(--ink-mute);margin-bottom:10px}
+.step p{font-size:14.5px;line-height:1.95;color:#3E3036}
+.loop{display:flex;align-items:center;gap:14px;margin-top:clamp(40px,6vw,64px);padding-top:24px;border-top:1px solid var(--ink-line);font-family:var(--serif);font-size:16px;letter-spacing:.12em}
+.loop svg{width:30px;height:30px;flex:none;fill:none;stroke:var(--lime-deep);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- Values ---------- */
+.values{background:var(--base)}
+.values__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.value{padding:8px clamp(20px,3vw,44px);border-left:1px solid var(--line)}
+.value:first-child{padding-left:0;border-left:0}
+.value .en{display:block;font-family:var(--latin);font-style:italic;font-size:15px;color:var(--lime);margin-bottom:16px}
+.value h3{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2vw,24px);letter-spacing:.14em;line-height:1.6;margin-bottom:14px}
+.value p{color:#D3C9C8;font-size:15px}
+
+/* ---------- Message ---------- */
+.message{background:var(--base-2);overflow:hidden}
+.message::before{content:"";position:absolute;left:50%;top:-30%;width:70vw;height:90%;transform:translateX(-50%);background:radial-gradient(50% 60% at 50% 0%,rgba(241,207,138,.10),transparent 70%);pointer-events:none}
+.msg{display:flex;flex-direction:row-reverse;gap:clamp(40px,6vw,90px);justify-content:center;align-items:flex-start;position:relative}
+.msg__title{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:.2em;line-height:1.7;flex:none}
+.msg__title small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.3em;color:var(--lime);margin-left:1.2em}
+.msg__body{writing-mode:vertical-rl;font-family:var(--serif);font-size:16px;line-height:2.3;letter-spacing:.14em;height:30em;max-width:100%;overflow-x:auto;overflow-y:hidden;display:flex;flex-direction:column}
+.msg__body p{margin:0 0 0 1.6em}
+.msg__body .first{font-size:1.32em;letter-spacing:.18em}
+.msg__sign{margin-top:auto;text-align:end}
+.msg__sign small{display:block;font-family:var(--sans);font-size:13px;color:var(--mute);letter-spacing:.2em}
+
+/* ---------- Company ---------- */
+.company{background:var(--base-deep)}
+.company__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(40px,7vw,110px);align-items:start}
+.company__grid .sec-h{margin-bottom:0}
+.profile{margin:0;border-top:1px solid var(--line)}
+.profile > div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.profile dt{color:var(--lime);font-family:var(--serif);font-size:14px;letter-spacing:.2em}
+.profile dd{margin:0;font-size:15px}
+.profile dd li{position:relative;padding-left:1.3em}
+.profile dd li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 6px rgba(241,207,138,.6)}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--base-deep);border-top:1px solid var(--line);padding:72px 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.footer__in{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.footer__tag{margin-top:20px;font-family:var(--serif);font-weight:600;font-size:clamp(18px,2vw,24px);letter-spacing:.16em}
+.footer nav ul{display:flex;flex-wrap:wrap;gap:10px 24px}
+.footer nav a{font-size:12.5px;letter-spacing:.12em;color:var(--mute);text-decoration:none;transition:color .3s}
+.footer nav a:hover{color:var(--lime)}
+.copy{margin-top:40px;font-family:var(--latin);font-size:13px;letter-spacing:.08em;color:var(--mute)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .concept__grid,.biz,.company__grid{grid-template-columns:minmax(0,1fr)}
+  .biz.rev .biz__media{order:0}
+  .biz__media{max-width:440px}
+  .biz.wide .biz__media{max-width:none}
+  .values__list{grid-template-columns:minmax(0,1fr)}
+  .value,.value:first-child{padding:28px 0;border-left:0;border-top:1px solid var(--line)}
+  .steps{grid-template-columns:minmax(0,1fr);gap:0;padding-left:44px}
+  .steps::before,.steps::after{left:11px;right:auto;top:10px;bottom:10px;width:1px;height:auto}
+  .steps::after{width:2px;margin:0 0 0 -.5px;transform:scaleY(0);transform-origin:top}
+  .steps.is-in::after{transform:scaleY(1)}
+  .step{padding:0 0 40px}
+  .step__dot{left:-44px}
+}
+@media (max-width:860px){
+  :root{--header-h:64px}
+  .menu-btn{display:block;z-index:120}
+  .gnav{position:fixed;inset:0;background:rgba(18,13,23,.97);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding-top:env(safe-area-inset-top,0px)}
+  .gnav.is-open{opacity:1;visibility:visible}
+  .gnav ul{flex-direction:column;align-items:center;gap:26px}
+  .gnav a{font-family:var(--serif);font-size:20px}
+  .rail{right:8px;height:36vh;width:12px}
+  .rail__read{display:none}
+  .msg{flex-direction:column;gap:32px}
+  .msg__title,.msg__body{writing-mode:horizontal-tb;height:auto}
+  .msg__title small{margin:0 0 .6em}
+  .msg__body{line-height:2.1;letter-spacing:.06em;overflow:visible}
+  .msg__body p{margin:0 0 1.4em}
+  .msg__sign{text-align:right}
+}
+@media (max-width:760px){
+  .hero__in{grid-template-columns:minmax(0,1fr);align-content:end;gap:24px;padding-bottom:100px}
+  .hero__title{grid-column:1;grid-row:1;writing-mode:horizontal-tb;margin:0;font-size:clamp(32px,9.4vw,42px);letter-spacing:.08em;line-height:1.5}
+  .hero__title span+span{padding-top:0;padding-left:1.2em}
+  .hero__lead{grid-column:1;grid-row:2;justify-self:start}
+  .hero__veil{background:linear-gradient(180deg,rgba(18,13,23,.45) 0%,transparent 16%,transparent 42%,rgba(18,13,23,.88) 64%,rgba(18,13,23,.96) 100%)}
+  .scroll-cue{left:24px}
+  .sec-lead{margin-top:-16px}
+  .profile > div{grid-template-columns:minmax(0,1fr);gap:4px}
+  .rail{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero__title span,.hero__lead{opacity:1;transform:none}
+  .js .reveal{opacity:1;transform:none}
+  .arc-fig .ln{stroke-dashoffset:0}
+  .arc-fig .beam{opacity:.9}.arc-fig .pool{opacity:.9;transform:none}
+  .arc-fig .lbl,.arc-fig .en{opacity:1}
+  .steps::after{transform:none}
+  .step{opacity:1}
+  .step__dot::after{transform:scale(1)}
+  .biz__media img{clip-path:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="header" id="header">
+  <div class="header__in">
+    <!-- 【確認事項】2. ロゴの英字表記「Life」「ENTERTAINMENT」は仮 -->
+    <a class="logo" href="#top" aria-label="合同会社Life トップへ"><b>L<i>i</i>fe</b><small>ENTERTAINMENT</small></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span></button>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#concept">名前に込めたこと</a></li>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#flow">一貫して手がける</a></li>
+        <li><a href="#values">大切にしていること</a></li>
+        <li><a href="#message">代表メッセージ</a></li>
+        <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- スクロールレール：劇場看板の電球が、読み進めるほど上から灯っていく -->
+<div class="rail" id="rail" aria-hidden="true">
+  <div class="rail__frame"></div>
+  <span class="rail__read" id="railRead">Act I</span>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" aria-labelledby="heroTitle">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="hero__in">
+      <!-- 【確認事項】1. キャッチコピー「人生に、光をあてる。」は仮案 -->
+      <h1 class="hero__title" id="heroTitle">
+        <span>人生に、</span>
+        <span><em>光</em>をあてる。</span>
+      </h1>
+      <div class="hero__lead">
+        <p class="hero__en" lang="en">For every life on stage.</p>
+        <ul class="hero__biz" aria-label="主な事業">
+          <li>発掘・養成</li><li>マネジメント</li><li>プロモート</li><li>イベント企画運営</li><li>教育・出版</li>
+        </ul>
+        <!-- 【確認事項】3. 「エンタメ企業」の名乗り方はCSVの記載に基づく -->
+        <p>タレント・モデル・音楽家。<span class="nw">アーティストの発掘・養成から、</span><span class="nw">マネジメント、プロモートまでを</span><span class="nw">一貫して手がけるエンタメ企業です。</span></p>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#concept">Scroll</a>
+  </section>
+
+  <!-- ============ CONCEPT ============ -->
+  <section class="sec concept" id="concept" data-rail aria-labelledby="conceptTitle">
+    <!-- 【確認事項】10. 「Life＝人生」「スポットライト」の見立ては本案の表現。理念・本文は仮の文章 -->
+    <div class="wrap">
+      <div class="sec-h reveal"><h2 id="conceptTitle">名前に込めたこと</h2><span class="sub" lang="en">about the name</span></div>
+      <div class="concept__grid">
+        <div class="concept__text reveal">
+          <dl class="word">
+            <dt>L<i>i</i>fe<small>／ 人生</small></dt>
+            <dd><span class="nw">ひとりの人の、</span><span class="nw">長い時間。</span></dd>
+          </dl>
+          <p>才能が見つかる瞬間。表現を磨き続ける日々。活躍の場が広がっていく時間。そして、その姿が多くの人に届く日。アーティストにとって、それはどれも人生の大切な一場面です。</p>
+          <p>合同会社Lifeは、その一場面ごとに光をあて、途中で手放さずに寄り添います。発掘から養成、マネジメント、プロモートまでを一貫して手がけるのは、ひとりの人生を、ひと続きの物語として見つめたいからです。</p>
+        </div>
+        <figure class="reveal">
+          <svg class="arc-fig" id="arcFig" data-draw viewBox="0 0 560 380" role="img" aria-labelledby="arcTitle arcDesc">
+            <title id="arcTitle">人生の時間に沿って、四つの節目に光があたる図</title>
+            <desc id="arcDesc">左から右へゆるやかに上がっていく一本の線。その上の四つの点、発掘、養成、マネジメント、プロモートに、上からスポットライトが順にあたっている。</desc>
+            <defs>
+              <linearGradient id="beamGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1CF8A" stop-opacity="0"/><stop offset="1" stop-color="#F1CF8A" stop-opacity=".28"/></linearGradient>
+            </defs>
+            <path class="floor" d="M20 330 H540"/>
+            <path class="beam k1" d="M88 0 L68 286 L108 286 Z"/>
+            <path class="beam k2" d="M216 0 L194 244 L238 244 Z"/>
+            <path class="beam k3" d="M344 0 L320 196 L368 196 Z"/>
+            <path class="beam k4" d="M472 0 L436 140 L508 140 Z"/>
+            <path class="ln" pathLength="1" d="M20 300 C 120 296, 160 262, 216 248 S 320 210, 344 200 S 440 150, 540 128"/>
+            <ellipse class="pool k1" cx="88" cy="288" rx="22" ry="5"/>
+            <ellipse class="pool k2" cx="216" cy="248" rx="24" ry="5"/>
+            <ellipse class="pool k3" cx="344" cy="200" rx="26" ry="5.5"/>
+            <ellipse class="pool k4" cx="472" cy="143" rx="38" ry="7"/>
+            <text class="lbl k1" x="88" y="322" text-anchor="middle">発掘</text>
+            <text class="lbl k2" x="216" y="282" text-anchor="middle">養成</text>
+            <text class="lbl k3" x="344" y="234" text-anchor="middle">マネジメント</text>
+            <text class="lbl k4" x="472" y="178" text-anchor="middle">プロモート</text>
+            <text class="en k1" x="88" y="346" text-anchor="middle">discover</text>
+            <text class="en k2" x="216" y="304" text-anchor="middle">train</text>
+            <text class="en k3" x="344" y="256" text-anchor="middle">manage</text>
+            <text class="en k4" x="472" y="200" text-anchor="middle">promote</text>
+          </svg>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHOTO BAND ============ -->
+  <!-- 画像：Unsplash（仮）紅い緞帳の前の演者たちの影。実際の公演写真への差し替え推奨 -->
+  <div class="band" aria-hidden="true">
+    <img id="bandImg" src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=2000&q=70" alt="" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+    <!-- 【確認事項】帯のコピーは仮案です -->
+    <p class="reveal"><span class="nw">幕が上がる前の時間も、</span><span class="nw">その人の人生の一部。</span></p>
+  </div>
+
+  <!-- ============ BUSINESS ============ -->
+  <section class="sec business" id="business" data-rail aria-labelledby="bizTitle">
+    <!-- 【確認事項】13. 英文ラベルは装飾用の仮表記 -->
+    <div class="wrap">
+      <div class="sec-h reveal"><h2 id="bizTitle">事業内容</h2><span class="sub" lang="en">business</span></div>
+      <p class="sec-lead reveal">アーティストと歩む仕事と、アーティストが立つ場・学びや言葉を届ける場をつくる仕事。二つの柱で、表現が人に届くまでを支えます。</p>
+
+      <p class="group reveal"><b>アーティスト事業</b><span lang="en">artist business</span></p>
+      <!-- 【確認事項】4. 各説明文はCSVの事業内容を膨らませた仮の文章 -->
+      <article class="biz reveal">
+        <div class="biz__media">
+          <!-- 画像：Unsplash（仮）ポートレート -->
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=72" alt="まっすぐ前を見つめる人物のポートレート" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </div>
+        <div class="biz__body">
+          <span class="biz__kind" lang="en">Discover &amp; train</span>
+          <h3>まだ光の当たらない<br>才能と、出会う。</h3>
+          <p class="biz__name">発掘・養成</p>
+          <p>タレント・モデル・音楽家として輝く可能性をもつ人と出会い、その個性を見極めます。そして表現の力を一歩ずつ磨き、舞台やカメラの前に立てる力を育てます。</p>
+          <ul class="tags" aria-label="対象"><li>タレント</li><li>モデル</li><li>音楽家</li></ul>
+        </div>
+      </article>
+
+      <article class="biz rev reveal">
+        <div class="biz__media">
+          <!-- 画像：Unsplash（仮）ライブステージと観客 -->
+          <img src="https://images.unsplash.com/photo-1499364615650-ec38552f4f34?auto=format&fit=crop&w=1200&q=72" alt="照明に照らされたライブステージと観客" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </div>
+        <div class="biz__body">
+          <span class="biz__kind" lang="en">Manage &amp; promote</span>
+          <h3>照らしつづけ、<br>光を広げる。</h3>
+          <p class="biz__name">マネジメント・プロモート</p>
+          <p>活動の場づくりから日々の調整まで、アーティストが表現に集中できる環境を支えます。その魅力がより多くの人へ届くよう、発信と機会づくりを仕掛けます。</p>
+          <ul class="tags" aria-label="主な内容"><li>活動の場づくり</li><li>日々の調整</li><li>発信・機会づくり</li></ul>
+        </div>
+      </article>
+
+      <p class="group reveal"><b>場をつくる事業</b><span lang="en">events, education &amp; publishing</span></p>
+      <!-- 【確認事項】5. 各説明文は仮。実績・出演者名・書名は掲載していません -->
+      <article class="biz wide reveal">
+        <div class="biz__media">
+          <!-- 画像：Unsplash（仮）弦楽器の演奏 -->
+          <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1400&q=72" alt="弦楽器を演奏する奏者たち" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </div>
+        <div class="biz__body">
+          <span class="biz__kind" lang="en">Event &amp; concert</span>
+          <h3>出演者と客席の、<br>両方に残る時間を。</h3>
+          <p class="biz__name">イベント・コンサートの企画運営</p>
+          <p>アーティストが最も輝く瞬間は、観客と向き合う場にあります。イベントやコンサートを企画から運営まで手がけ、心に残る時間をつくります。</p>
+          <ul class="tags" aria-label="主な内容"><li>イベント</li><li>コンサート</li></ul>
+        </div>
+      </article>
+
+      <article class="biz wide rev reveal">
+        <div class="biz__media">
+          <!-- 画像：Unsplash（仮）講演会の客席 -->
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=72" alt="講演会の会場で話に耳を傾ける参加者" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </div>
+        <div class="biz__body">
+          <span class="biz__kind" lang="en">Seminar &amp; lecture</span>
+          <h3>語る人と、<br>聞きたい人をつなぐ。</h3>
+          <p class="biz__name">セミナー・講演会の企画運営</p>
+          <p>伝えたい想いや知見を持つ人と、それを聞きたい人をつなぐ場を設けます。テーマに合わせた構成づくりから当日の進行まで、学びが届く場を整えます。</p>
+          <ul class="tags" aria-label="主な内容"><li>セミナー</li><li>講演会</li></ul>
+        </div>
+      </article>
+
+      <article class="biz wide reveal">
+        <div class="biz__media">
+          <!-- 画像：Unsplash（仮）ノートと万年筆 -->
+          <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?auto=format&fit=crop&w=1400&q=72" alt="木の机に置かれたノートと万年筆" loading="lazy" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </div>
+        <div class="biz__body">
+          <span class="biz__kind" lang="en">Education &amp; publishing</span>
+          <h3>言葉と学びとして、<br>価値を残す。</h3>
+          <p class="biz__name">教育・出版事業</p>
+          <p>舞台の上だけでなく、言葉や学びとしても価値を残していく。教育と出版の事業を通じて、表現や知識をかたちにし、必要としている人のもとへ届けます。</p>
+          <ul class="tags" aria-label="主な内容"><li>教育</li><li>出版</li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FLOW ============ -->
+  <section class="sec flow" id="flow" data-rail data-light aria-labelledby="flowTitle">
+    <!-- 【確認事項】発掘→養成→マネジメント→プロモートの順はCSVの記載どおり。各段の説明文は仮（順序のある工程のため番号を使用） -->
+    <div class="wrap">
+      <div class="sec-h reveal"><h2 id="flowTitle">一貫して手がける</h2><span class="sub" lang="en">from discovery to the stage</span></div>
+      <p class="sec-lead reveal">ひとりのアーティストに関わる四つの仕事を、途中で手を離さず、ひと続きの舞台として手がけます。</p>
+      <ol class="steps" id="steps">
+        <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">01</span><h3>見つける</h3><span class="step__sub">発掘</span><p>輝く可能性をもつ人と出会い、その人だけの個性を見極めます。</p></li>
+        <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">02</span><h3>磨く</h3><span class="step__sub">養成</span><p>表現の力を一歩ずつ育て、人の前に立てる力をつけます。</p></li>
+        <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">03</span><h3>支える</h3><span class="step__sub">マネジメント</span><p>活動の場と日々の調整を担い、表現に集中できる環境を整えます。</p></li>
+        <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">04</span><h3>届ける</h3><span class="step__sub">プロモート</span><p>発信と機会づくりで、その魅力を多くの人のもとへ届けます。</p></li>
+      </ol>
+      <p class="loop reveal"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M24.5 11 A10 10 0 1 0 25 17"/><path d="M25 5.5 V11.5 H19"/></svg><span>そして、<span class="nw">その先の舞台へ。物語は続いていきます。</span></span></p>
+    </div>
+  </section>
+
+  <!-- ============ VALUES ============ -->
+  <section class="sec values" id="values" data-rail aria-labelledby="valuesTitle">
+    <!-- 【確認事項】6. 3項目は仮の理念案 -->
+    <div class="wrap">
+      <div class="sec-h reveal"><h2 id="valuesTitle">大切にしていること</h2><span class="sub" lang="en">our values</span></div>
+      <ul class="values__list">
+        <li class="value reveal"><span class="en" lang="en">Consistency</span><h3>途中で手放さない</h3><p>出会いから活躍の場まで、同じチームで一貫して関わること。それが、アーティストの安心と信頼につながると考えています。</p></li>
+        <li class="value reveal"><span class="en" lang="en">Individuality</span><h3>その人らしさを磨く</h3><p>型にはめるのではなく、一人ひとりの個性を見つめ、その人にしかない表現が伸びていくように育てます。</p></li>
+        <li class="value reveal"><span class="en" lang="en">For the audience</span><h3>受け取る人を想う</h3><p>舞台も、講演も、本も。最後に受け取る人の時間が豊かになることを、すべての仕事の基準にします。</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MESSAGE ============ -->
+  <section class="sec message" id="message" data-rail aria-labelledby="msgTitle">
+    <!-- 要確認：代表メッセージは草案です。ご本人の確認・修正を経て公開してください -->
+    <!-- 【確認事項】12. 署名欄は役職のみ。役職名「代表社員」は仮置き -->
+    <div class="wrap msg">
+      <h2 class="msg__title reveal" id="msgTitle"><small>代表メッセージ</small>ひとりの物語を、<br>最後まで照らす。</h2>
+      <div class="msg__body reveal" tabindex="0" aria-label="代表メッセージ本文">
+        <p class="first">才能は、<br>見つけてもらうのを待っている。</p>
+        <p>まだ誰にも知られていない表現が、きっとどこかにあります。それを見つけ、磨き、多くの人のもとへ届けること。私たちはその長い道のりに、最初から最後まで寄り添いたいと考えています。</p>
+        <p>舞台の上の一瞬は、その人が重ねてきた時間の上に立っています。だから私たちは、華やかな場面だけでなく、幕が上がる前の日々にも光をあてます。</p>
+        <p>イベントや講演、教育や出版の仕事も、表現と人が出会う場をつくりたいという同じ想いから生まれました。一人ひとりの人生が、より豊かな物語になるように。これからも、ひとつずつ丁寧に照らしていきます。</p>
+        <p class="msg__sign"><small>代表社員　田木香織</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPANY ============ -->
+  <section class="sec company" id="company" data-rail aria-labelledby="companyTitle">
+    <!-- 【確認事項】7. 所在地・設立・代表者等の掲載可否をご確認ください -->
+    <!-- 【確認事項】11. 既存サイト「LiFE」とは代表者・所在地が異なる別会社として作成 -->
+    <div class="wrap company__grid">
+      <div class="sec-h reveal"><h2 id="companyTitle">会社概要</h2><span class="sub" lang="en">company</span></div>
+      <dl class="profile reveal">
+        <div><dt>商号</dt><dd>合同会社Life</dd></div>
+        <div><dt>事業内容</dt><dd><ul><li>タレント・モデル・音楽家などアーティストの発掘・養成、マネジメント、プロモート</li><li>イベント・セミナー・コンサート・講演会の企画運営</li><li>教育・出版事業</li></ul></dd></div>
+        <!-- 【確認事項】役職名「代表社員」は仮置き。住所はCSVの最新の行の表記です -->
+        <div><dt>代表者</dt><dd>代表社員　田木香織</dd></div>
+        <div><dt>所在地</dt><dd>〒175-0091　東京都板橋区三園1丁目20番8</dd></div>
+        <!-- 設立・資本金はCSVに無いため未掲載
+        <div><dt>設立</dt><dd></dd></div>
+        <div><dt>資本金</dt><dd></dd></div>
+        -->
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div>
+        <a class="logo" href="#top" aria-label="合同会社Life トップへ"><b>L<i>i</i>fe</b><small>ENTERTAINMENT</small></a>
+        <p class="footer__tag">人生に、光をあてる。</p>
+      </div>
+      <nav aria-label="フッターメニュー">
+        <ul>
+          <li><a href="#concept">名前に込めたこと</a></li>
+          <li><a href="#business">事業内容</a></li>
+          <li><a href="#flow">一貫して手がける</a></li>
+          <li><a href="#values">大切にしていること</a></li>
+          <li><a href="#message">代表メッセージ</a></li>
+          <li><a href="#company">会社概要</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="copy">&copy; <span id="year">2026</span> 合同会社Life</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Menu ---------- */
+  var btn = document.getElementById('menuBtn'), nav = document.getElementById('gnav');
+  function setMenu(open){
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    nav.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open){ var f = nav.querySelector('a'); if (f) f.focus(); }
+  }
+  btn.addEventListener('click', function(){ setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+  nav.addEventListener('click', function(e){ if (e.target.closest('a') && nav.classList.contains('is-open')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && nav.classList.contains('is-open')){ setMenu(false); btn.focus(); } });
+  matchMedia('(min-width:861px)').addEventListener('change', function(m){ if (m.matches) setMenu(false); });
+
+  /* ---------- Reveal ---------- */
+  var targets = document.querySelectorAll('.reveal, [data-draw], #steps');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.add(el.hasAttribute('data-draw') ? 'is-drawn' : 'is-in');
+        io.unobserve(el);
+      });
+    }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(t){ io.observe(t); });
+  } else {
+    targets.forEach(function(t){ t.classList.add(t.hasAttribute('data-draw') ? 'is-drawn' : 'is-in'); });
+  }
+
+  /* ---------- Header / rail（看板の電球） / band ---------- */
+  var header = document.getElementById('header');
+  var rail = document.getElementById('rail'), read = document.getElementById('railRead');
+  var BULBS = 18, bulbs = [];
+  for (var b = 0; b < BULBS; b++){
+    var el = document.createElement('i'); el.className = 'rail__bulb'; el.style.top = (b / (BULBS - 1) * 100) + '%';
+    rail.appendChild(el); bulbs.push(el);
+  }
+  var ROMAN = ['I','II','III','IV','V','VI','VII','VIII'];
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-rail]'));
+  var lights = Array.prototype.slice.call(document.querySelectorAll('[data-light]'));
+  var bandImg = document.getElementById('bandImg');
+  function update(){
+    header.classList.toggle('is-scrolled', scrollY > 40);
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    var lit = Math.round(p * (BULBS - 1));
+    bulbs.forEach(function(x, i){ x.classList.toggle('is-on', i <= lit); x.classList.toggle('is-now', i === lit && !reduce); });
+    var act = 0, mid = innerHeight * .45;
+    secs.forEach(function(s, i){ if (s.getBoundingClientRect().top <= mid) act = i + 1; });
+    read.textContent = 'Act ' + ROMAN[Math.max(0, act - 1)];
+    rail.classList.toggle('on-light', lights.some(function(s){ var r = s.getBoundingClientRect(); return r.top < innerHeight / 2 && r.bottom > innerHeight / 2; }));
+    if (!reduce && bandImg && bandImg.parentNode){
+      var r = bandImg.parentNode.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight){
+        var k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+        bandImg.style.transform = 'translateY(' + (k * -40).toFixed(1) + 'px)';
+      }
+    }
+  }
+  var ticking = false;
+  addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(function(){ update(); ticking = false; }); } }, {passive:true});
+  addEventListener('resize', update);
+  update();
+
+  /* ---------- Hero canvas：スポットライトが探し、一点を見つけ、光の輪が広がる ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d'), hero = cv.parentElement;
+  var W = 0, H = 0, dpr = 1, running = false, visible = true, raf = 0, t0 = performance.now();
+  var C_LIME = '241,207,138', C_TEXT = '242,235,227', C_CURT = '180,48,74';
+  var mobile = false, src = {x:0, y:0}, home = {x:0, y:0}, dust = [], stars = [], ptr = {x:0, y:0, on:false}, off = {x:0, y:0};
+
+  function build(){
+    mobile = W < 760;
+    src = mobile ? {x:W * .82, y:-30} : {x:W * .78, y:-40};
+    home = mobile ? {x:W * .5, y:H * .36} : {x:W * .5, y:H * .7};
+    dust = [];
+    var n = mobile ? 70 : 140;
+    for (var i = 0; i < n; i++) dust.push({x:Math.random()*W, y:Math.random()*H, r:.4 + Math.random()*1.3, vx:(Math.random()-.5)*.25, vy:-.05 - Math.random()*.2, ph:Math.random()*6.28});
+    stars = [];
+    var m = mobile ? 14 : 26;
+    for (var k = 0; k < m; k++){ var a = k / m * Math.PI * 2 + Math.random()*.2; stars.push({a:a, d:.55 + Math.random()*.45, r:.8 + Math.random()*1.6, ph:Math.random()*6.28}); }
+  }
+  function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function ease(t){ return 1 - Math.pow(1 - t, 3); }
+  function target(t){
+    /* 0〜3.2秒：探す（リサージュで舞台を掃く）→ 4.4秒までに一点へ収束 */
+    var sx = W * (.5 + .34 * Math.sin(t * 1.25)), sy = (mobile ? H*.34 : H*.66) + (mobile ? H*.08 : H*.1) * Math.sin(t * 1.9 + 1);
+    var k = ease(clamp((t - 2.6) / 1.8));
+    var x = sx + (home.x - sx) * k, y = sy + (home.y - sy) * k;
+    if (k >= 1){ x += Math.sin(t * .5) * 6 + off.x; y += Math.sin(t * .7) * 3 + off.y; }
+    return {x:x, y:y, k:k};
+  }
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    /* 舞台の床 */
+    var floorY = mobile ? H * .44 : H * .78;
+    var fg = ctx.createLinearGradient(0, floorY - H * .2, 0, H);
+    fg.addColorStop(0, 'rgba(36,25,43,0)'); fg.addColorStop(1, 'rgba(48,32,52,.55)');
+    ctx.fillStyle = fg; ctx.fillRect(0, floorY - H * .2, W, H);
+    /* 両袖の緞帳 */
+    var cw = mobile ? W * .07 : W * .06;
+    [0, 1].forEach(function(side){
+      for (var f = 0; f < 6; f++){
+        var x = side ? W - cw + f * cw / 6 : f * cw / 6, a = .16 + .14 * Math.sin(f * 1.7 + t * .3);
+        var g = ctx.createLinearGradient(x, 0, x + cw / 6, 0);
+        g.addColorStop(0, 'rgba(' + C_CURT + ',' + (a * .4).toFixed(3) + ')'); g.addColorStop(.5, 'rgba(' + C_CURT + ',' + a.toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + C_CURT + ',' + (a * .4).toFixed(3) + ')');
+        ctx.fillStyle = g; ctx.fillRect(x, 0, cw / 6 + 1, H);
+      }
+    });
+    var tg = target(t), on = clamp(t / .8);
+    if (ptr.on && tg.k >= 1 && !reduce){ off.x += ((ptr.x - home.x) * .12 - off.x) * .04; off.y += ((ptr.y - home.y) * .06 - off.y) * .04; }
+    else { off.x *= .96; off.y *= .96; }
+    var bloom = clamp((t - 4.2) / 1.6);
+    var rx = (mobile ? 46 : 80) * (1 + .5 * bloom), ry = rx * .26;
+    /* 光の円錐 */
+    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    var cg = ctx.createLinearGradient(src.x, src.y, tg.x, tg.y);
+    cg.addColorStop(0, 'rgba(' + C_LIME + ',' + (.02 * on) + ')'); cg.addColorStop(1, 'rgba(' + C_LIME + ',' + ((.16 + .06 * bloom) * on).toFixed(3) + ')');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.moveTo(src.x - 6, src.y); ctx.lineTo(tg.x - rx, tg.y); ctx.lineTo(tg.x + rx, tg.y); ctx.lineTo(src.x + 6, src.y); ctx.closePath(); ctx.fill();
+    /* 光の輪（床の楕円） */
+    ctx.save(); ctx.translate(tg.x, tg.y); ctx.scale(1, ry / rx);
+    var pg = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+    pg.addColorStop(0, 'rgba(' + C_LIME + ',' + ((.5 + .25 * bloom) * on).toFixed(3) + ')'); pg.addColorStop(.7, 'rgba(' + C_LIME + ',' + (.22 * on).toFixed(3) + ')'); pg.addColorStop(1, 'rgba(' + C_LIME + ',0)');
+    ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(0, 0, rx, 0, 6.283); ctx.fill();
+    /* 見つけた瞬間の波紋 */
+    if (tg.k >= 1){
+      var age = (t - 4.4) % 3.2;
+      if (age > 0){ ctx.strokeStyle = 'rgba(' + C_LIME + ',' + (.45 * (1 - age / 3.2)).toFixed(3) + ')'; ctx.lineWidth = 1.2 * rx / ry * .3;
+        ctx.beginPath(); ctx.arc(0, 0, rx * (1 + age * .5), 0, 6.283); ctx.stroke(); }
+    }
+    ctx.restore();
+    /* 円錐の中の塵 */
+    var dxs = tg.x - src.x, dys = tg.y - src.y;
+    dust.forEach(function(d){
+      if (!reduce){ d.x += d.vx; d.y += d.vy; if (d.y < -4) d.y = H + 4; if (d.x < -4) d.x = W + 4; if (d.x > W + 4) d.x = -4; }
+      var s = (d.y - src.y) / dys; if (s <= 0 || s > 1.05) return;
+      var cx = src.x + dxs * s, half = 6 + (rx - 6) * s;
+      var inside = 1 - Math.abs(d.x - cx) / half; if (inside <= 0) return;
+      var a = on * inside * (.35 + .4 * Math.sin(t * 1.3 + d.ph) * Math.sin(t * 1.3 + d.ph));
+      ctx.fillStyle = 'rgba(' + C_TEXT + ',' + a.toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.283); ctx.fill();
+    });
+    /* 広がる光：輪のまわりに小さな光が灯る（プロモート） */
+    if (bloom > 0) stars.forEach(function(s, i){
+      var k = clamp((bloom - i / stars.length * .6) / .4); if (k <= 0) return;
+      var x = tg.x + Math.cos(s.a) * rx * (1.3 + s.d * 1.6) * ease(k), y = tg.y + Math.sin(s.a) * ry * (1.6 + s.d * 3) * ease(k) - s.d * (mobile ? 22 : 40) * ease(k);
+      var tw = .55 + .45 * Math.sin(t * 1.6 + s.ph);
+      var g = ctx.createRadialGradient(x, y, 0, x, y, s.r * 5);
+      g.addColorStop(0, 'rgba(' + C_LIME + ',' + (.5 * k * tw).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + C_LIME + ',0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, s.r * 5, 0, 6.283); ctx.fill();
+    });
+    ctx.restore();
+    /* 灯体 */
+    ctx.fillStyle = 'rgba(' + C_LIME + ',' + (.8 * on) + ')';
+    ctx.beginPath(); ctx.arc(src.x, Math.max(src.y, 0) + 2, 4, 0, 6.283); ctx.fill();
+  }
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+  function loop(now){ if (!running) return; draw((now - t0) / 1000); raf = requestAnimationFrame(loop); }
+  function start(){ if (running || reduce || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(loop); }
+  function stop(){ running = false; cancelAnimationFrame(raf); }
+  function still(){ off.x = off.y = 0; draw(7.4); }   /* 見つけて広がり終えた状態を一枚だけ描く */
+
+  hero.addEventListener('pointermove', function(e){ var r = cv.getBoundingClientRect(); ptr.x = e.clientX - r.left; ptr.y = e.clientY - r.top; ptr.on = true; }, {passive:true});
+  hero.addEventListener('pointerleave', function(){ ptr.on = false; });
+
+  resize();
+  if (reduce) still(); else start();
+  var rt, lastW = W, lastH = H;
+  addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){
+      if (cv.clientWidth === lastW && Math.abs(cv.clientHeight - lastH) < 120) return;   /* スマホのURLバー伸縮では描き直さない */
+      lastW = cv.clientWidth; lastH = cv.clientHeight;
+      resize(); if (!running) still();
+    }, 150);
+  });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; visible ? start() : stop(); }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+})();
+</script>
+</body>
+</html>
